@@ -2,7 +2,8 @@ import { redirect } from "next/navigation";
 import { getProduct, updateProduct } from "../../../../database/products";
 
 export default async function EditPage({params}) {
-  const [product] = getProduct(params.prodId)
+  const param = await params
+  const [product] = getProduct(param.prodId)
   
     async function getUpdatedFormData(formData) {
     "use server";
@@ -16,7 +17,7 @@ export default async function EditPage({params}) {
       fetchedData.prodName,
       fetchedData.prodPrice,
       fetchedData.prodImage.name,
-      params.prodId
+      param.prodId
     );
     redirect("/");
   }
