@@ -1,17 +1,15 @@
 'use client' 
 import { removeProduct } from "@/serverActions/productActions";
-import { revalidatePath } from "next/cache";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-export const dynamic = "force-dynamic"
+// export const dynamic = "force-dynamic"
 
 export default function Product({product}) {
-    function handledDelete(id) {
-        removeProduct(id)
-        revalidatePath("/", "page")
-        // redirect("/")
+    async function handledDelete(id) {
+        await removeProduct(id)
+        redirect("/")
     }
   return (
     <div>

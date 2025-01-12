@@ -4,6 +4,7 @@ import { getProduct, updateProduct } from "../../../../database/products";
 export default async function EditPage({params}) {
   const param = await params
   const [product] = getProduct(param.prodId)
+  console.log(product)
   
     async function getUpdatedFormData(formData) {
     "use server";

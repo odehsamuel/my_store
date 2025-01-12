@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { addProduct } from "../../../database/products";
 
-export default async function About() {
+export default async function AddProduct() {
   async function getFormData(formData) {
     "use server";
     const fetchedData = {
@@ -9,12 +9,13 @@ export default async function About() {
       prodPrice: formData.get("price"),
       prodImage: formData.get("image"),
     };
-    console.log(fetchedData.prodImage);
+    // console.log(fetchedData.prodImage);
     addProduct(
       fetchedData.prodName,
       fetchedData.prodPrice,
       fetchedData.prodImage.name
     );
+
     redirect("/");
   }
 
